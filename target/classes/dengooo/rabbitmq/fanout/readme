@@ -1,0 +1,5 @@
+此包为演示广播交换器的模板
+FanoutProducer.java 生产者
+Consumer1.java 单个消费者 ，在这个java类中，队列绑定了全部路由键
+Consumer2.java 单个消费者，在这个java类中，队列绑定路由键时，故意绑定了一个不存在的路由键
+上面两个消费者的执行结果都是一样的

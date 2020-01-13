@@ -1,0 +1,6 @@
+此包为演示直接交换器的模板
+DirectProducer.java 生产者
+DirectCustomer.java 单个消费者
+MultiBindConsumer.java 一个交换器绑定多个队列
+MultiChannelConsumer.java 一个链接多个信道
+MultiConsumerOneQueue.java 一个队列多个消费者

@@ -18,7 +18,7 @@ public class DirectCustomer {
 		//1.创建连接工厂
         ConnectionFactory connectionFactory = new ConnectionFactory();
         //2.设置主机
-        connectionFactory.setHost("192.168.0.108");
+        connectionFactory.setHost("192.168.0.100");
         connectionFactory.setVirtualHost("dengooo");
         connectionFactory.setUsername("root");
         connectionFactory.setPassword("123456");
@@ -27,12 +27,12 @@ public class DirectCustomer {
         //4.创建信道
         Channel channel = connection.createChannel();
         //设置交换器.此处设置为 直接交换器
-        channel.exchangeDeclare(DirectProducer.EXCHANGE_NAME, BuiltinExchangeType.DIRECT);
-        String queueName="queue-king";
-        channel.queueDeclare(queueName, false, false, false, null);
+        channel.exchangeDeclare(null, BuiltinExchangeType.DIRECT,true);
+        String queueName="sb.hello";
+        channel.queueDeclare(queueName, true, false, false, null);
         //绑定，将路由键与交换器绑定
-        String routeKey ="king";
-        channel.queueBind(queueName,DirectProducer.EXCHANGE_NAME,routeKey);
+        String routeKey ="sb.hello";
+        channel.queueBind(queueName,"deng",routeKey);
         System.out.println("waiting for message ......");
         
         //定义一个真正的消费者来订阅消息
